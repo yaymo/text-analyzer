@@ -48,7 +48,7 @@ function textData(text){
   wordReport.find('.js-word-unique').text(uniqueWords);
   wordReport.find('.js-word-average').text(wordLength + " characters");
   wordReport.find('.js-word-length').text(sentenceLength + " words");
-  wordReport.find('.js-text-report').removeClass('hidden');
+  wordReport.removeClass('hidden');
 
 }
 
