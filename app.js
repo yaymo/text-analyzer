@@ -1,6 +1,6 @@
 function distinctWords(token){
   var result = [];
-  for (var i=1; i<token.length; i++){
+  for (var i=0; i<token.length; i++){
     if (result.indexOf(token[i]) === -1){
       result.push(token[i]);
     }
@@ -11,7 +11,7 @@ function distinctWords(token){
 
 // .match(regex) returns a word once it finds at least one space at the beginning and end??
 // or... once we find a space at beginning and end, that's a word??
-function tokenizeText(token){
+function tokenizeText(text){
   return text.toLowerCase().match(/\b[^\s]+\b/g).sort();
 }
 
@@ -32,16 +32,17 @@ function averageWordLength(token){
 // totalSentences: if it matches one of these characters anywhere in text
 //return the number of times it find it, if not return 1?
 function averageSentenceLength(text){
-  var totalSentences = text.match(/[.!?]+/g) ? text.match(/[.!?]+/g).length :1;
-  var wordCount = tokenizeText(token).length;
+  var totalSentences = text.match(/[.!?]+/g) ? text.match(/[.!?]+/g).length : 1;
+  var wordCount = tokenizeText(text).length;
   return (wordCount / totalSentences);
 }
 
 function textData(text){
   var uniqueWords = distinctWords(token);
-  var totalWords = tokenizeText(token);
+  var token = tokenizeText(text);
   var wordLength = averageWordLength(token);
   var sentenceLength = averageSentenceLength(text);
+  var totalWords = token.length;
   var wordReport = $('.js-text-report');
   wordReport.find('.js-word-count').text(totalWords);
   wordReport.find('.js-word-unique').text(uniqueWords);
