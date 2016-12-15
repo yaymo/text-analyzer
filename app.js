@@ -1,8 +1,8 @@
-function distinctWords(token){
+function distinctWords(tokens){
   var result = [];
-  for (var i=0; i<token.length; i++){
-    if (result.indexOf(token[i]) === -1){
-      result.push(token[i]);
+  for (var i=0; i<tokens.length; i++){
+    if (result.indexOf(tokens[i]) === -1){
+      result.push(tokens[i]);
     }
   }
   return result.length;
@@ -23,9 +23,9 @@ function removeSpaces(text){
 
 
 
-function averageWordLength(token){
-  var totalLength = token.join("").length;
-  return (totalLength / token.length);
+function averageWordLength(tokens){
+  var totalLength = tokens.join("").length;
+  return (totalLength / tokens.length);
 }
 
 
@@ -38,11 +38,12 @@ function averageSentenceLength(text){
 }
 
 function textData(text){
-  var uniqueWords = distinctWords(token);
-  var token = tokenizeText(text);
-  var wordLength = averageWordLength(token);
+  var uniqueWords = distinctWords(tokens);
+  var tokens = tokenizeText(text);
+  var wordLength = averageWordLength(tokens);
   var sentenceLength = averageSentenceLength(text);
-  var totalWords = token.length;
+  var totalWords = tokens.length;
+
   var wordReport = $('.js-text-report');
   wordReport.find('.js-word-count').text(totalWords);
   wordReport.find('.js-word-unique').text(uniqueWords);
@@ -52,7 +53,7 @@ function textData(text){
 
 }
 
-function handleSubmit(event){
+function handleSubmit(){
   $('js-text-submit').submit(function(event){
     event.preventDefault();
     var textEntry = $(this).find('#user-text').val();
