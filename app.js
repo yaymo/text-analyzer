@@ -42,12 +42,12 @@ function textData(text){
   var totalWords = tokenizeText(token);
   var wordLength = averageWordLength(token);
   var sentenceLength = averageSentenceLength(text);
-
-  $('.js-word-count').text(totalWords);
-  $('.js-word-unique').text(uniqueWords);
-  $('.js-word-average').text(wordLength + " characters");
-  $('.js-word-length').text(sentenceLength + " words");
-  $('.js-text-report').removeClass('hidden');
+  var wordReport = $('.js-text-report');
+  wordReport.find('.js-word-count').text(totalWords);
+  wordReport.find('.js-word-unique').text(uniqueWords);
+  wordReport.find('.js-word-average').text(wordLength + " characters");
+  wordReport.find('.js-word-length').text(sentenceLength + " words");
+  wordReport.find('.js-text-report').removeClass('hidden');
 
 }
 
