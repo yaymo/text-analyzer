@@ -1,3 +1,11 @@
+function averageSentenceLength(text){
+  var totalSentences = text.match(/[.!?]+/g) ? text.match(/[.!?]+/g).length : 1;
+  var wordCount = tokenizeText(text).length;
+  return (wordCount / totalSentences);
+}
+
+
+
 function distinctWords(tokens){
   var result = [];
   for (var i=0; i<tokens.length; i++){
@@ -26,15 +34,6 @@ function removeSpaces(text){
 function averageWordLength(tokens){
   var totalLength = tokens.join("").length;
   return (totalLength / tokens.length);
-}
-
-
-// totalSentences: if it matches one of these characters anywhere in text
-//return the number of times it find it, if not return 1?
-function averageSentenceLength(text){
-  var totalSentences = text.match(/[.!?]+/g) ? text.match(/[.!?]+/g).length : 1;
-  var wordCount = tokenizeText(text).length;
-  return (wordCount / totalSentences);
 }
 
 function textData(text){
