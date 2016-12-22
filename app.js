@@ -1,15 +1,15 @@
-function averageWordsPerSentence(text) {
+function wordsPerSentence(text) {
   var numberSentences = text.match(/[.!?]+/g) ? text.match(/[.!?]+/g).length : 1;
   var wordCount = tokenizeText(text).length;
-  return (wordCount / numberSentences).toFixed(2);
+  return (wordCount / numberSentences);
 }
 
 function averageWordLength(tokens) {
   var totalLength = tokens.join("").length;
-  return (totalLength / tokens.length).toFixed(2);
+  return (totalLength / tokens.length);
 }
 
-function numberDistinctWords(tokens) {
+function distinctWords(tokens) {
   var result = [];
   for (var i=0; i<tokens.length; i++){
     if (result.indexOf(tokens[i]) === -1) {
@@ -35,10 +35,10 @@ function removeSpaces(text) {
 
 function textData(text) {
   var tokens = tokenizeText(text);
-  var uniqueWords = numberDistinctWords(tokens);
+  var uniqueWords = distinctWords(tokens);
   var totalWords = tokens.length;
   var wordLength = averageWordLength(tokens);
-  var sentenceLength = averageWordsPerSentence(text);
+  var sentenceLength = wordsPerSentence(text);
 
   var wordReport = $('.js-text-report');
   wordReport.find('.js-word-count').text(totalWords);
