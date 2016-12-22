@@ -4,7 +4,10 @@ function averageSentenceLength(text){
   return (wordCount / totalSentences);
 }
 
-
+function averageWordLength(tokens){
+  var totalLength = tokens.join("").length;
+  return (totalLength / tokens.length);
+}
 
 function distinctWords(tokens){
   var result = [];
@@ -30,21 +33,14 @@ function removeSpaces(text){
 }
 
 
-
-function averageWordLength(tokens){
-  var totalLength = tokens.join("").length;
-  return (totalLength / tokens.length);
-}
-
 function textData(text){
-  var uniqueWords = distinctWords(tokens);
   var tokens = tokenizeText(text);
+  var uniqueWords = distinctWords(tokens);
   var wordLength = averageWordLength(tokens);
   var sentenceLength = averageSentenceLength(text);
   var totalWords = tokens.length;
 
   var wordReport = $('.js-text-report');
-
   wordReport.find('.js-word-count').text(totalWords);
   wordReport.find('.js-word-unique').text(uniqueWords);
   wordReport.find('.js-word-average').text(wordLength + " characters");
