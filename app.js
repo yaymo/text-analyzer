@@ -36,19 +36,20 @@ function removeSpaces(text){
 function textData(text){
   var tokens = tokenizeText(text);
   var uniqueWords = distinctWords(tokens);
+  var totalWords = tokens.length;
   var wordLength = averageWordLength(tokens);
   var sentenceLength = averageSentenceLength(text);
-  var totalWords = tokens.length;
 
   var wordReport = $('.js-text-report');
   wordReport.find('.js-word-count').text(totalWords);
   wordReport.find('.js-word-unique').text(uniqueWords);
   wordReport.find('.js-word-average').text(wordLength + " characters");
   wordReport.find('.js-word-length').text(sentenceLength + " words");
+  wordReport.removeClass('hidden');
 }
 
 function handleSubmit(){
-  $('js-text-submit').submit(function(event){
+  $('js-text-form').submit(function(event){
     event.preventDefault();
     var textEntry = $(this).find('#user-text').val();
     textData(removeSpaces(textEntry));
